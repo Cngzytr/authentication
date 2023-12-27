@@ -1,52 +1,46 @@
 version: '3'
 
 services:
+
   webdb:
     image: mariadb:10.4
-    #command: >
-    #  sh -c "/usr/sbin/mariadbd --user=root && echo 'Starting mysql...'"
-    command: [--innodb-log-file-size=16M,--max-allowed-packet=1G]
     environment:
       - MYSQL_ROOT_PASSWORD=supersecretpassword
-      - MYSQL_DATABASE=dbname
+      - MYSQL_DATABASE=auth
       - MYSQL_USER=root
     volumes:
-      - ./data/:/var/lib/mysql/
+      - ./auth/data/:/var/lib/mysql/
     ports:
-      - "3306:3306"
+      - "3308:3306"
     networks:
       - webapp-network
 
   webapp:
     build:
       context: .
-    #command: >
-    #  sh -c "composer update"
     ports:
-      - '8000:8000'
+      - '8082:8000'
     environment:
       - VIRTUAL_HOST=localhost
     depends_on:
       - webdb
     volumes:
-      - '.:/var/www/html'
+      - './auth:/var/www/html'
     networks:
       - webapp-network
 
-  #front:
-  #  buil:d:
-  #    co:ntext: .
-  #    do:ckerfile: DockerNodefile
-  #  port:s:
-  #    - :'8000:8000'
-  #  envi:ronment:
-  #    - :VIRTUAL_HOST=localhost
-  #  depe:nds_on:
-  #    - :db
-  #  volu:mes:
-  #    - :'.:/var/www/html'
-  #  netw:orks:
-  #    - :app-network
+  productservice:
+    build:
+      context: .
+      dockerfile: DockerNodefile
+    ports:
+      - '8083:8000'
+    environment:
+      - VIRTUAL_HOST=localhost
+    volumes:
+      - './productservice:/var/www/html'
+    networks:
+      - webapp-network
 
 networks:
   webapp-network:

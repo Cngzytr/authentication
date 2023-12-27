@@ -63,7 +63,7 @@ sed -i -e "s/listen = \/run\/php\/php7.3-fpm.sock/listen = 127.0.0.1:9001/g" /et
 RUN sed -i -e "s/;listen.mode = 0660/listen.mode = 0750/g" /etc/php/7.3/fpm/pool.d/www.conf && \
 find /etc/php/7.3/cli/conf.d/ -name "*.ini" -exec sed -i -re 's/^(\s*)#(.*)/\1;\2/g' {} \;
 
-COPY ./ /var/www/html/
+COPY ./auth /var/www/html/
 
 #CMD composer install && php artisan key:generate && php artisan cache:clear && composer dump-autoload && service php7.3-fpm start && nginx -g "daemon off;"
 CMD php artisan serve --host=0.0.0.0 --port=8000

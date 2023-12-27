@@ -1,0 +1,29 @@
+FROM php:8.2-fpm
+
+RUN apt-get update && apt-get install -y \
+    git \
+    unzip \
+    libzip-dev \
+    libonig-dev \
+    libpng-dev \
+    libxml2-dev \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev 
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd zip pdo_mysql mbstring exif pcntl bcmath soap
+
+WORKDIR /var/www/html
+COPY ./productservice /var/www/html
+
+RUN composer install --optimize-autoloader --no-dev
+
+RUN chown -R www-data:www-data /var/www/html /var/www/html/storage /var/www/html/bootstrap/cache
+RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+
+EXPOSE 80
+EXPOSE 8000
+
+CMD php artisan serve --host=0.0.0.0 --port=8000
