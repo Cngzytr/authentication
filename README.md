@@ -12,6 +12,8 @@ Step 2:
 
     php artisan passport:install
 
+    php artisan db:seed
+
 Step 3:
 
     docker exec -it authentication-productservice-1 "bash"
