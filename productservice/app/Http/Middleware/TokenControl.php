@@ -19,11 +19,14 @@ class TokenControl
         $header = $request->header('Authorization');
 
         $response = Http::withHeaders([
-            'Authorization' => $header
+            'Authorization' => $header,
+            'Accept' => 'application/json'
         ])->get('http://webapp:8000/api/check-token');
 
-        if(strlen($response->body()) < 2) {
+        if(json_decode($response->body())->message == 'authenticated') {
             return $next($request);
+        }else {
+            return response()->json(['yetki' => false]);
         }
     }
 }
