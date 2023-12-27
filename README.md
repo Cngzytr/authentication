@@ -12,7 +12,11 @@ Step 2:
 
     php artisan passport:install
 
+    ** After passport install you need to password grant client ID, and Client Secret key. Take a note. 
+
     php artisan db:seed
+
+    ** Now you can use oauth in postman collection with Client ID and Client Secret.
 
 Step 3:
 
