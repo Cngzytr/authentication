@@ -1,12 +1,20 @@
 Step 1: 
 
+    cd auth
+
+    composer install
+
+    cd .. | cd productservice
+
+    composer install --ignore-platform-req=ext-mongodb
+
+    cd ..
+
     docker-compose up -d --build
 
 Step 2: 
 
-    docker exec -it authentication-webapp-1 "bash"
-
-    composer install
+    docker exec -it authservice bash
 
     php artisan migrate
 
@@ -17,9 +25,3 @@ Step 2:
     php artisan db:seed
 
     ** Now you can use oauth in postman collection with Client ID and Client Secret.
-
-Step 3:
-
-    docker exec -it authentication-productservice-1 "bash"
-
-    composer install
