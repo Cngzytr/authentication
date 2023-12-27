@@ -37,7 +37,7 @@ return [
 
         'mongodb' => [
             'driver' => 'mongodb',
-            'dsn' => env('DB_URI', 'mongodb://root:supersecretpassword@192.168.0.7:27017/?ssl=false&compressors=disabled&gssapiServiceName=mongodb'),
+            'dsn' => env('DB_URI', 'mongodb://root:supersecretpassword@mongodb:27017/?ssl=false&compressors=disabled&gssapiServiceName=mongodb'),
             'database' => 'admin',
         ],
 

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ac8fe148-253b-4930-9ef9-742d52d3b873",
+		"_postman_id": "a70fbe97-ddfe-4bd0-91f8-87a2e19faf7d",
 		"name": "Getmobil",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "14273541"
@@ -86,9 +86,15 @@
 				{
 					"name": "Get Product",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIyIiwianRpIjoiNTlkNjQ5NzhmNDU5ZDkzN2Y3OGU3ZDdmYWZmYTQyNzk0ZjQxYzNhODFlN2FiOGJkYjIyYmEwNzBlMGE3NDFjZDZkYTZlNTZhZmYzMjlkOTUiLCJpYXQiOjE3MDM3MDY0MjcuNzQ3NDg4LCJuYmYiOjE3MDM3MDY0MjcuNzQ3NDksImV4cCI6MTczNTMyODgyNy42NDUwNjIsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.RrXpPKlh5tUsYknIgp414jAKqKKH8Sd5z0grsn-pOgHimbQqWbXq_mjnSw5GuD73zWm6ezTTmXUubnfGvOonegIpzBSe25QwRQIN2BgH_fKpEhzuS5p-06FUOC-RbZFusn-alIU2-G5v6x7xvpEoGn69AOL4L4n5KHh3XKtX2TywccFbSPe0pgTQ9WwRUGepAOa4q3cN3Rl_3D9OYo58BL_9kz3lRiXxLhf4OuXNNcPJVuqfyhxhBmYD9qJmGIEJmztgccYbL54Qz9bGl_WohHFuzhuNkLLQkYU1xR0ooxTCG6s0g66vP7qQfE4-AsbSDx1PcSc47kIGAemOVxMidwVGrB6MDrJLGaq4jchGfoVhSy-v7KkxFE4FyaQ7eVojJvmkRmff2vntGWL-_BOar2rlFL9oklLnn0Qh63AQzIt7URdjwhVzZuQyiyP7CJKCx66Sxie7-WM0bC0btmcuoqxpOeErFngLOnJrskmGsf3eNJyZ4iXPf6rMZdNbvd5xlMDWrx08h97sfAqssGe11p43-28UYqOO-CokPjqF6mlt_8fM-_yyvzds7oB99X92vmDCnWcPLMUS1GVIySDCQlskCQE9gVZk6lJznnk9-1BNilwyUdVEVAs8zjewyc4XXqwDzg57GKv-j7aNbwfI7wdpQ9IDE9SYt4Cyu3dpvXU"
+							}
+						},
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8083/api/posts"
+						"url": "http://localhost:8083/api/post"
 					},
 					"response": []
 				},
