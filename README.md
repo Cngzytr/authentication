@@ -2,9 +2,13 @@ Step 1:
 
     cd auth
 
+    cp .env.example .env
+
     composer install
 
     cd .. | cd productservice
+
+    cp .env.example .env
 
     composer install --ignore-platform-req=ext-mongodb
 
