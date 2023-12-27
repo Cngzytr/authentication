@@ -20,6 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::middleware('auth:api')->get('/check-token', function (Request $request) {
-    $request->user()->token = true;
-    return $request->user();
+    return true;
 });

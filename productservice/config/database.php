@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'mongodb'),
 
     /*
     |--------------------------------------------------------------------------
@@ -34,6 +34,12 @@ return [
     */
 
     'connections' => [
+
+        'mongodb' => [
+            'driver' => 'mongodb',
+            'dsn' => env('DB_URI', 'mongodb://root:supersecretpassword@192.168.0.7:27017/?ssl=false&compressors=disabled&gssapiServiceName=mongodb'),
+            'database' => 'admin',
+        ],
 
         'sqlite' => [
             'driver' => 'sqlite',

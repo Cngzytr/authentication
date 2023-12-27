@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "ac8fe148-253b-4930-9ef9-742d52d3b873",
+		"name": "Getmobil",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "14273541"
+	},
+	"item": [
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "Check Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIyIiwianRpIjoiMGJhNmZjNmFkOGQ4YzAwNzgzOTJhOGQ4ZjlhYzM5MDA3ZjQ0ZDJlYzliYjc1ODM1NWFjOTZkYjJjMTgxZDUwNjFiYTk4ZTUyODFlMzRlZjEiLCJpYXQiOjE3MDM2NzE0MDMsIm5iZiI6MTcwMzY3MTQwMywiZXhwIjoxNzM1MjkzODAzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.lbHc16t8WJ0pE_DzAiAl80BUn59gnALBCcwanWXegXz8wBe51DEtiS1NdZzY6L1I0-39Lb1pa6J3EkgLzA2w3snFKBkGcKbhDKG8dYrfH6yqW7bf7wHkSmqdGMvnW2PbDh6c_jwNnu380f8dbHy7MzbE0sxtzw1dhTMbHeDYPSg6uAUTOU6jrwb66dInTuxCYdWDe-gqNJ-8-pCyFOKA7xmLhKsvbzn3cXgTZdAg8-RFIsZzCkoODjBQhLOQWKadNOep5sMhz3gWlx7vpgftSD7E39C-RG4wItN61447-lXvWnGWtaLeJjhwzoXBSF7Z6cT_6kzuPJvWzKA5KSftl71Z77-XQnrKxIP8IyLwy1f9QnBYkGo8qTHaio8jAF3M5-ptAM0rEGtZlFbNNHtkf7-GRLJBAi2MigetcYUOgG8EOVQmmPd00-WDCrchFHO_MisHDGvBwzDS_OhE1tiDtnvFc9QarrarJGhEOX5zKZf_JTiL8-U6ujgZ50D0pvaWXV_Gq0V2aWnpmX0ZYx5W9B7U3fAooYsG4bgmDsa1rB9EzFg0NzyWeUOCyRbfOwIwzwacgqC65p5i1iGwQTrAfVW-tS7_SjY6z7af2AWWwyEBsD2pr1OXiFCO5DWKkqunaHDtC3R2qgqPkgx6UUp2uXlIC8lAKIyd6ORp2ae8AVo"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8082/api/check-token"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "client_id",
+									"value": "2",
+									"type": "default"
+								},
+								{
+									"key": "client_secret",
+									"value": "J69eSBRqD4GFIplox8dKneqggmDCr5lJcT2Thce0",
+									"type": "default"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "default"
+								},
+								{
+									"key": "username",
+									"value": "cengizhan_yeter@hotmail.com",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "cengizhan1",
+									"type": "default"
+								}
+							]
+						},
+						"url": "http://localhost:8082/oauth/token"
+					},
+					"response": []
+				},
+				{
+					"name": "Test Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIyIiwianRpIjoiMTNmMDM5ZTkwNzdiZWYzMDIwYTc5ZTMwYTlhNGViZTk1OGJkNzJkMjMyOGNhZGQ0ZjNiYTBhZTkwZGZjZDVjZTU3NWZmNDI3MzQ1YThkZWIiLCJpYXQiOjE3MDM2NjU5MjEsIm5iZiI6MTcwMzY2NTkyMSwiZXhwIjoxNzM1Mjg4MzIxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.ShKfpbU2kB2rmpFB517eEiElcboKC4OAVFIOo_zL_FZ7dPWD5RXNX9fl9G1tMOZs60dKMOZJWxxARhpsOIiFoz58RrntFBpyUHx7aLwap40S4XoLEFxoVdXmlFyHl5wkaxtQNdqi96d4HpSM9lmGpdRz7B6j3NLz0Rf4w53iNzVHXEZa_eelbVDCCcxkzPAb0T7NcVPfj_RI55i6_rwGeUMYpQ8KelOCzM4pAOj62JJRgzvRLkN1hRqn4anrhU7EyY168zeRk039yRSByoId63990kMkMPL5f74_3ge7lUl5v8s1F3-KdN-n9tlyfyOq-STu9v10SR0VQMNBEhJVMWLHBU4DeEEMVKiTGw8Z4QUfRTkFr2nNKiNXQURFKu8-7rwaY3h3A8aHNRaaq090y-mQ42ZLMrqBkihBCVaUcD5QiJZC8JEzlxNdrNhCTaH9KMZBNEFod8wngUeCi879bw-EIhyX-2EclgigN-L51uYXg6dZ9LisDoS8Nbz5hKDW12vzx7o2Dj7IwGjX6ub0UbeDK3y_rKxs_rz5mkFn1sc7peaaj5EBwjFlqGTknMPQZEOAH8-07qlW2dEUlOOYjaE2jOt8dmoo66U2cU5c3TeFGiXE4kiV6qeOKtf993Gbz9R01XowFmAC5dRize6zMWb0lYix1s3OMafpBnVunGM"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8082/api/user"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product Service",
+			"item": [
+				{
+					"name": "Get Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8083/api/posts"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\" : \"Second Post\",\r\n  \"body\" : \"This is my second post.\",\r\n  \"slug\" : \"second-blog-post\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8083/api/posts"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\" : \"Second Post\",\r\n  \"body\" : \"This is my second post.\",\r\n  \"slug\" : \"second-blog-post\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8083/api/posts/{post_id}"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8083/api/posts/{post_id}"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

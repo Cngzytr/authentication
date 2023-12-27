@@ -3,6 +3,7 @@ version: '3'
 services:
 
   webdb:
+    container_name: mysql
     image: mariadb:10.4
     environment:
       - MYSQL_ROOT_PASSWORD=supersecretpassword
@@ -13,9 +14,10 @@ services:
     ports:
       - "3308:3306"
     networks:
-      - webapp-network
+      - docker-network
 
   webapp:
+    container_name: authservice
     build:
       context: .
     ports:
@@ -27,21 +29,50 @@ services:
     volumes:
       - './auth:/var/www/html'
     networks:
-      - webapp-network
+      - docker-network
 
   productservice:
+    container_name: productservice
     build:
       context: .
       dockerfile: DockerNodefile
     ports:
       - '8083:8000'
     environment:
-      - VIRTUAL_HOST=localhost
+      MONGODB_URI: 'mongodb://root:supersecretpassword@localhost:27017/'
+    depends_on:
+      - mongodb
     volumes:
       - './productservice:/var/www/html'
     networks:
-      - webapp-network
+      - docker-network
+
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: supersecretpassword
+      MONGO_INITDB_DATABASE: admin
+    networks:
+      - docker-network
+
+  mongo-express:
+    container_name: mongo-express
+    image: mongo-express
+    restart: always
+    ports:
+      - 8084:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: supersecretpassword
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: password
+      ME_CONFIG_MONGODB_URL: mongodb://root:supersecretpassword@localhost:27017/
 
 networks:
-  webapp-network:
+  docker-network:
     driver: bridge

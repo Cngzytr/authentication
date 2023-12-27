@@ -20,10 +20,6 @@ Route::namespace('App\Http\Controllers')->prefix('')->group(function () {
         return view('dashboard');
     })->middleware(['auth'])->name('dashboard');
 
-    Route::get('/check-token', function () {
-        return "checked";
-    })->name('checkToken');
-    
     require __DIR__.'/auth.php';
 });
 
