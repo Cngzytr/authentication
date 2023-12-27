@@ -1,0 +1,35 @@
+#app-cover {
+  position: relative;
+}
+
+.the-shadow {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px -10px 40px -7px;
+}
+
+#toggle_checkbox
+{
+  display: none;
+}
+
+#toggle_checkbox:checked + label:before
+{
+  top: 0;
+  left: 0px;
+  width: 55px;
+  height: 26.5px;
+  border-color: #0527df;
+  background: transparent;
+}
+
+#toggle_checkbox:checked + label:after
+{
+  top: 1.9px;
+  right: 10px;
+  width: 22.5px;
+  height: 22.5px;
+  border-color: red;
+  background-color: red;
+  content: 'EN';
+  font-size: 14px;
+  font-weight: 650;
+}   
