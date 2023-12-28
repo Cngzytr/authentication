@@ -1,48 +1,79 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Post;
-
+use App\Services\PostService;
+use Exception;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
-{
+{   
+    public $postService;
+
+    public function __construct(PostService $postService){
+        $this->postService = $postService;
+    }
+
     public function show()
     {
-        return response()->json([
-            'post' => Post::get()
-        ], 201);
+        $result = ['status' => 200];
+
+        try {
+            $result['data'] = $this->postService->getAll();
+        } catch (Exception $e) {
+            $result = ['status' => 500, 'error' => $e->getMessage()];
+        }
+
+        return response()->json($result, $result['status']);
     }
 
     public function store(Request $request)
     {
-        $post = new Post;
+        $data = $request->only([
+            'title',
+            'body',
+            'slug'
+        ]);
 
-        $post->title = $request->title;
-        $post->body = $request->body;
-        $post->slug = $request->slug;
+        $result = ['status' => 200];
 
-        $post->save();
+        try {
+            $result['data'] = $this->postService->savePostData($data);
+        } catch (Exception $e) {
+            $result = ['status' => 500, 'error' => $e->getMessage()];
+        }
 
-        return response()->json(["result" => "ok"], 201);
+        return response()->json($result, $result['status']);
     }
 
     public function destroy($postId)
     {
-        $post = Post::find($postId);
-        $post->delete();
+        $result = ['status' => 200];
 
-        return response()->json(["result" => "ok"], 200);       
+        try {
+            $result['data'] = $this->postService->deleteById($postId);
+        } catch (Exception $e) {
+            $result = ['status' => 500, 'error' => $e->getMessage()];
+        }
+
+        return response()->json($result, $result['status']);
     }
 
     public function update(Request $request, $postId)
     {
-        $post = Post::find($postId);
-        $post->title = $request->title;
-        $post->body = $request->body;
-        $post->slug = $request->slug;
-        $post->save();
+        $data = $request->only([
+            'title',
+            'body',
+            'slug'
+        ]);
 
-        return response()->json(["result" => "ok"], 201);       
+        $result = ['status' => 200];
+
+        try {
+            $result['data'] = $this->postService->updatePostData($data, $postId);
+        } catch (Exception $e) {
+            $result = ['status' => 500, 'error' => $e->getMessage()];
+        }
+
+        return response()->json($result, $result['status']);
     }
 }
