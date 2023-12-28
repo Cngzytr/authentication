@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +23,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware('token')->get('/post', [PostController::class, 'show']);
 
 Route::middleware('token')->resource('posts', PostController::class)->only([
+    'destroy', 'show', 'store', 'update'
+]);
+
+Route::middleware('token')->get('/category', [CategoryController::class, 'show']);
+
+Route::middleware('token')->resource('categories', CategoryController::class)->only([
     'destroy', 'show', 'store', 'update'
 ]);
