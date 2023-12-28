@@ -31,7 +31,8 @@ class PostController extends Controller
         $data = $request->only([
             'title',
             'body',
-            'slug'
+            'slug',
+            'category_id'
         ]);
 
         $result = ['status' => 200];
@@ -63,7 +64,8 @@ class PostController extends Controller
         $data = $request->only([
             'title',
             'body',
-            'slug'
+            'slug',
+            'category_id'
         ]);
 
         $result = ['status' => 200];

@@ -22,6 +22,7 @@ class PostRepository
         $post->title = $data['title'];
         $post->body = $data['body'];
         $post->slug = $data['slug'];
+        $post->category_id = $data['category_id'];
 
         $post->save();
 
@@ -33,7 +34,7 @@ class PostRepository
 
         $post->title = $data['title'];
         $post->body = $data['body'];
-        $post->slug = $data['slug'];
+        $post->category_id = $data['category_id'];
 
         $post->update();
 
